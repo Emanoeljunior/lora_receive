@@ -9,5 +9,11 @@
     ],
     "idf.port": "/dev/ttyUSB0",
     "idf.pythonBinPath": "/home/emanoel/.espressif/python_env/idf4.4_py3.8_env/bin/python",
-    "idf.toolsPath": "/home/emanoel/.espressif"
+    "idf.toolsPath": "/home/emanoel/.espressif",
+    "files.associations": {
+        "*.ipp": "c",
+        "iterator": "c",
+        "lora.h": "c",
+        "esp_wifi.h": "c"
+    }
 }
