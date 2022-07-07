@@ -112,6 +112,8 @@ static void mqtt_app_start(void)
 {
     esp_mqtt_client_config_t mqtt_cfg = {
         .uri = CONFIG_BROKER_URL,
+        .username = "token",
+        .password = "f766db46-ebbb-4b0f-8130-97f7efde63cf"
     };
 #if CONFIG_BROKER_URL_FROM_STDIN
     char line[128];
@@ -146,9 +148,7 @@ static void mqtt_app_start(void)
     {
         /* code */
         char word[20];
-        sprintf(word,"dist: %f", distance);
-
-        
+        sprintf(word," %f, %f,  %f", distance,-26.239231120551757, -48.801317720236305);
         // int int_distance_cm = distance*100
     
         int msg_id = esp_mqtt_client_publish(client, "/topic/qos1", word, 0, 1, 0);
@@ -206,7 +206,7 @@ void app_main()
      */
     ESP_ERROR_CHECK(example_connect());
 
-   xTaskCreate(&task_rx, "task_rx", 2048, NULL, 5, NULL);
-   xTaskCreate(&mqtt_app_start, "mqtt_app_start", 2048, NULL, 5, NULL);
+   xTaskCreate(&task_rx, "task_rx", 3*2048, NULL, 5, NULL);
+   xTaskCreate(&mqtt_app_start, "mqtt_app_start", 3*2048, NULL, 5, NULL);
 
 }
